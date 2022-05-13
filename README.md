@@ -1,5 +1,16 @@
 # Kotlin-lotto
 
+## 코드 리뷰 과정
+
+1. 저장소를 자신의 개인 저장소로 fork 합니다.
+2. 기능과 관련된 적절한 이름의 branch 를 생성 후 commit 합니다.
+3. 2번의 과정이 끝나면 local 에만 변경사항이 반영되어 있으므로 본인의 remote 저장소에 push 합니다.
+4. 다음 과정은 아래 링크의 코드 리뷰 2단계를 참고하며 진행합니다.
+
+* [next-step 의 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+---
+
 ## Rules
 
 - 모든 코드에 테스트 코드 작성
