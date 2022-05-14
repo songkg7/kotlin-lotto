@@ -1,8 +1,8 @@
 package view
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.DisplayName
 import java.io.ByteArrayInputStream
 import java.util.*
 
@@ -22,7 +22,6 @@ internal class InputViewTest : AnnotationSpec() {
     }
 
     @Test
-    @DisplayName("1, 2, 3, 4, 5, 6 을 입력하면 [1,2,3,4,5,6] 리스트를 반환한다.")
     internal fun inputLottoNumber() {
         val inputView = "1, 2, 3, 4, 5, 6".createInputView()
         val lottoNumbers = inputView.inputLottoNumbers()
@@ -31,8 +30,21 @@ internal class InputViewTest : AnnotationSpec() {
     }
 
     @Test
-    internal fun inputManualNumber() {
-        val inputView = "3".createInputView()
+    internal fun inputLottoNumbers() {
+        val inputView = "1,2,3,4,5,6 \n 1, 2,3 ,4,5,6".createInputView()
+        val lottoNumbers = inputView.inputLottoNumbers(2)
 
+        lottoNumbers shouldBe listOf(listOf(1, 2, 3, 4, 5, 6), listOf(1, 2, 3, 4, 5, 6))
+    }
+
+    @Test
+    internal fun duplicateInputLottoNumber() {
+        val inputView = "1,1,2,3,4,5".createInputView()
+
+        val exception = shouldThrow<IllegalArgumentException> {
+            inputView.inputLottoNumbers()
+        }
+
+        exception.message shouldBe ILLEGAL_LOTTO_NUMBER_COUNT_MESSAGE
     }
 }

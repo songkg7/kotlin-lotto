@@ -1,7 +1,10 @@
 package controller
 
 import model.LottoCount
+import model.LottoTicket
 import model.Money
+import model.policy.ManualLottoPolicy
+import model.policy.RandomLottoPolicy
 import view.InputView
 import view.OutputView
 import view.validInputView
@@ -12,7 +15,8 @@ class LottoApp(private val inputView: InputView, private val outputView: OutputV
         val capital = validInputView(this::inputCapital) { outputView.printMessage(it) }
         val lottoCount = validInputView({ inputLottoCount(capital) }) { outputView.printMessage(it) }
 
-        // TODO: 수동, 자동 전략 생성
+        val lottoTicket = validInputView({ inputLottoNumbers(lottoCount) }) { outputView.printMessage(it) }
+
     }
 
     private fun inputCapital(): Money {
@@ -28,6 +32,13 @@ class LottoApp(private val inputView: InputView, private val outputView: OutputV
     private fun inputManualCount(): Int {
         outputView.requestManualCount()
         return inputView.inputManualCount()
+    }
+
+    private fun inputLottoNumbers(lottoCount: LottoCount): LottoTicket {
+        outputView.requestLottoNumber()
+        val lottoNumbersGroup = inputView.inputLottoNumbers(lottoCount.manualCount)
+        return LottoTicket.of(ManualLottoPolicy(lottoNumbersGroup),
+            RandomLottoPolicy(lottoCount.autoCount))
     }
 
 }

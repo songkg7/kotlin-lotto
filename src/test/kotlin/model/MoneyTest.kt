@@ -15,7 +15,7 @@ internal class MoneyTest : DescribeSpec({
         }
         context("amount 를 price 로 나누면") {
             it("구매할 수 있는 전체 로또 개수가 반환된다.") {
-                val totalCount = Money(amount).div(PRICE)
+                val totalCount = Money(amount) / PRICE
 
                 totalCount shouldBe 5
             }
