@@ -1,5 +1,7 @@
 package view
 
+const val NUMBER_FORMAT_MESSAGE = "숫자만 입력해주세요."
+
 class OutputView {
 
     fun requestCapital() {
