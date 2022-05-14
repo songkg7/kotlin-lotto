@@ -15,14 +15,16 @@ fun <T> validInputView(input: Supplier<T>, errorMessage: Consumer<String>): T {
 
 class InputView(private val scanner: Scanner) {
 
-    fun inputNumber() = try {
-        scanner.nextLine().toLong()
+    fun inputLottoNumbers() = try {
+        scanner.nextLine().split(",").map { it.trim().toInt() }
     } catch (e: NumberFormatException) {
         throw NumberFormatException(NUMBER_FORMAT_MESSAGE)
     }
 
-    fun inputLottoNumbers() = try {
-        scanner.nextLine().split(",").map { it.trim().toInt() }
+    fun inputManualCount() = inputNumber().toInt()
+
+    fun inputNumber() = try {
+        scanner.nextLine().toLong()
     } catch (e: NumberFormatException) {
         throw NumberFormatException(NUMBER_FORMAT_MESSAGE)
     }
