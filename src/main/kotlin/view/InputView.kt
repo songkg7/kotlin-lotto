@@ -2,15 +2,13 @@ package view
 
 import model.LOTTO_NUMBER_COUNT
 import java.util.*
-import java.util.function.Consumer
-import java.util.function.Supplier
 
-fun <T> validInputView(input: Supplier<T>, errorMessage: Consumer<String>): T {
+fun <T> validInputView(supplier: () -> T, consumer: (String) -> Unit): T {
     return try {
-        input.get()
+        supplier.invoke()
     } catch (e: IllegalArgumentException) {
-        errorMessage.accept(e.message!!)
-        validInputView(input, errorMessage)
+        consumer.invoke(e.message!!)
+        validInputView(supplier, consumer)
     }
 }
 
@@ -20,7 +18,11 @@ class InputView(private val scanner: Scanner) {
 
     fun inputLottoNumbers(): List<Int> = try {
         printNewLine() // FIXME: Scanner nextLine 개행문자 오류
-        scanner.nextLine().split(",").map { it.trim().toInt() }.distinct()
+        scanner.nextLine().split(",").map { it.trim().toInt() }
+            .distinct()
+            .also {
+                valid(it)
+            }
     } catch (e: NumberFormatException) {
         throw NumberFormatException(NUMBER_FORMAT_MESSAGE)
     }
