@@ -8,4 +8,7 @@ class LottoTicket private constructor(val lottoNumbersGroup: List<LottoNumbers>)
             return LottoTicket(policies.flatMap { it.generate() })
         }
     }
+
+    fun match(winningNumbers: WinningNumbers) =
+        lottoNumbersGroup.map { it.match(winningNumbers) }
 }

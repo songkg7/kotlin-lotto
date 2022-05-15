@@ -11,7 +11,17 @@ class LottoNumbers private constructor(val lottoNumberGroup: List<LottoNumber>) 
         }
     }
 
-    fun contains(bonusBall: LottoNumber) = lottoNumberGroup.contains(bonusBall)
+    fun contains(lottoNumber: LottoNumber) = lottoNumberGroup.contains(lottoNumber)
+
+    fun match(winningNumbers: WinningNumbers): LottoRank {
+        val winningNumber = winningNumbers.winningNumber
+        val bonusBall = winningNumbers.bonusBall
+
+        return LottoRank.of(matchCount(winningNumber), contains(bonusBall))
+    }
+
+    private fun matchCount(winningNumber: LottoNumbers) =
+        lottoNumberGroup.map { winningNumber.contains(it) }.count()
 
     fun toIntNumbers() = lottoNumberGroup.map { it.number }
 }
