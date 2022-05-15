@@ -41,10 +41,10 @@ class InputView(private val scanner: Scanner) {
         return (START..count).map { inputLottoNumbers() }
     }
 
-    fun inputManualCount() = inputNumber().toInt()
+    fun inputManualCount() = inputNumber()
 
     fun inputNumber() = try {
-        scanner.nextLine().toLong()
+        scanner.nextLine().toInt()
     } catch (e: NumberFormatException) {
         throw NumberFormatException(NUMBER_FORMAT_MESSAGE)
     }
