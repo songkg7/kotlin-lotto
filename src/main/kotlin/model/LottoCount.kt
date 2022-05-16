@@ -2,7 +2,7 @@ package model
 
 import view.OVER_CAPITAL_MESSAGE
 
-class LottoCount private constructor(val manualCount: Int, val autoCount: Int){
+class LottoCount private constructor(val manualCount: Int, val autoCount: Int) {
 
     companion object {
         fun of(manualCount: Int, money: Money): LottoCount {
@@ -20,6 +20,4 @@ class LottoCount private constructor(val manualCount: Int, val autoCount: Int){
             require(autoCount >= 0) { OVER_CAPITAL_MESSAGE }
         }
     }
-
-
 }

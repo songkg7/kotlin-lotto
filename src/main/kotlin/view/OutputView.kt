@@ -19,6 +19,7 @@ class OutputView {
     }
 
     fun requestLottoNumber() {
+        printNewLine()
         println("6개의 숫자를 입력해주세요. (, 로 구분)")
     }
 
@@ -38,6 +39,7 @@ class OutputView {
     private fun printNewLine() = println()
 
     fun requestBonusBall() {
+        printNewLine()
         println("보너스볼을 입력해주세요.")
     }
 
