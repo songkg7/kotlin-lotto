@@ -1,8 +1,6 @@
 package view
 
-import model.LottoCount
-import model.LottoNumbers
-import model.LottoTicket
+import model.*
 
 const val NUMBER_FORMAT_MESSAGE = "숫자만 입력해주세요."
 const val OVER_CAPITAL_MESSAGE = "구매금액을 초과한 로또 구매는 할 수 없습니다."
@@ -56,5 +54,14 @@ class OutputView {
     fun printLottoCount(lottoCount: LottoCount) {
         println("수동으로 ${lottoCount.manualCount}개, 자동으로 ${lottoCount.autoCount}개 구매했습니다.")
     }
+
+    fun printLottoResult(lottoResult: LottoResult) {
+        printNewLine()
+        println("게임 결과 : [${renderLottoRanks(lottoResult.lottoRanks)}]")
+        println("수익금 : ${lottoResult.calcTotalPrize()}, 수익율 : ${lottoResult.calcEarningRate()}")
+    }
+
+    private fun renderLottoRanks(lottoRanks: List<LottoRank>) =
+        lottoRanks.joinToString(LOTTO_DELIMITER) { it.name }
 
 }
