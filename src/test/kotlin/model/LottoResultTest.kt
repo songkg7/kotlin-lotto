@@ -14,7 +14,17 @@ internal class LottoResultTest : DescribeSpec({
 
                 earningRate shouldBe 11
             }
+        }
 
+        context("10000 원의 자본금으로 5등 하나에만 당첨되었다면") {
+            val lottoRanks = listOf(LottoRank.FIFTH)
+            val lottoResult = LottoResult(lottoRanks, Money.of(10000))
+
+            it("수익율은 0.5 이다.") {
+                val earningRate = lottoResult.calcEarningRate()
+
+                earningRate shouldBe 0.5
+            }
         }
     }
 })

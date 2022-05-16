@@ -57,11 +57,17 @@ class OutputView {
 
     fun printLottoResult(lottoResult: LottoResult) {
         printNewLine()
-        println("게임 결과 : [${renderLottoRanks(lottoResult.lottoRanks)}]")
-        println("수익금 : ${lottoResult.calcTotalPrize()}, 수익율 : ${lottoResult.calcEarningRate()}")
+        println("--- 게임 결과 ---")
+        renderRankCount(lottoResult)
+        println("수익금 : ${lottoResult.calcTotalPrize()}원, 수익율 : ${lottoResult.calcEarningRate()} (기준은 1)")
     }
 
-    private fun renderLottoRanks(lottoRanks: List<LottoRank>) =
-        lottoRanks.joinToString(LOTTO_DELIMITER) { it.name }
-
+    private fun renderRankCount(lottoResult: LottoResult) {
+        println("1등 : ${lottoResult.calcRankCount(LottoRank.FIRST)}개")
+        println("2등 : ${lottoResult.calcRankCount(LottoRank.SECOND)}개")
+        println("3등 : ${lottoResult.calcRankCount(LottoRank.THIRD)}개")
+        println("4등 : ${lottoResult.calcRankCount(LottoRank.FORTH)}개")
+        println("5등 : ${lottoResult.calcRankCount(LottoRank.FIFTH)}개")
+        println("MISS : ${lottoResult.calcRankCount(LottoRank.MISS)}개")
+    }
 }
