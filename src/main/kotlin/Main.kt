@@ -1,9 +1,9 @@
 import controller.LottoApp
 import view.InputView
 import view.OutputView
-import java.util.*
+import view.ReadInInput
 
 fun main() {
-    val lottoApp = LottoApp(InputView(Scanner(System.`in`)), OutputView())
+    val lottoApp = LottoApp(InputView(ReadInInput()), OutputView())
     lottoApp.run()
 }
