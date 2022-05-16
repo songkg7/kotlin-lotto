@@ -24,5 +24,30 @@ internal class LottoNumbersTest : DescribeSpec({
                 actual shouldBe true
             }
         }
+
+        context("lottoNumbers 안에 포함되어 있지 않은 숫자와 비교하면") {
+            val lottoNumber = LottoNumber.of(45)
+            it("false 를 반환한다.") {
+                val lottoNumbers = LottoNumbers.of(lottoNumberGroup)
+                val actual = lottoNumbers.contains(lottoNumber)
+
+                actual shouldBe false
+            }
+        }
+    }
+
+    describe("match") {
+        context("당첨번호와 보너스볼이 주어지면") {
+            val winningNumber = LottoNumbers.of(lottoNumberGroup)
+            val bonusBall = LottoNumber.of(7)
+            val winningNumbers = WinningNumbers.of(winningNumber, bonusBall)
+
+            it("당첨 등수를 반환한다.") {
+                val inputNumbers = LottoNumbers.ofIntList(listOf(1, 3, 4, 5, 6, 7))
+                val lottoRank = inputNumbers.match(winningNumbers)
+
+                lottoRank shouldBe LottoRank.SECOND
+            }
+        }
     }
 })

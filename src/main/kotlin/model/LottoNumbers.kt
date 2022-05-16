@@ -21,7 +21,7 @@ class LottoNumbers private constructor(val lottoNumberGroup: List<LottoNumber>) 
     }
 
     private fun matchCount(winningNumber: LottoNumbers) =
-        lottoNumberGroup.map { winningNumber.contains(it) }.count()
+        lottoNumberGroup.count { winningNumber.contains(it) }
 
     fun toIntNumbers() = lottoNumberGroup.map { it.number }
 }
