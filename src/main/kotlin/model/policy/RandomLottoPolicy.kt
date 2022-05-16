@@ -6,12 +6,12 @@ import model.LottoNumbers
 
 class RandomLottoPolicy(private val autoCount: Int) : LottoPolicy {
 
-    override fun generate(): List<LottoNumbers> = (1..autoCount).map { randomNumbers() }
+    override fun generate(): List<LottoNumbers> = List(autoCount) { randomNumbers() }
 
     private fun randomNumbers(): LottoNumbers {
         val candidates = LOTTO_NUMBER_RANGE.toMutableList()
         candidates.shuffle()
-        val randomIntList = (1..LOTTO_NUMBER_COUNT).map { candidates.removeLast() }
+        val randomIntList = List(LOTTO_NUMBER_COUNT) { candidates.removeLast() }
         return LottoNumbers.ofIntList(randomIntList)
     }
 }
