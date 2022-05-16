@@ -14,9 +14,7 @@ class LottoNumber private constructor(val number: Int) {
         }
 
         private fun validRange(number: Int) {
-            if (number !in LOTTO_NUMBER_RANGE) {
-                throw IllegalArgumentException(OUT_OF_RANGE_LOTTO_NUMBER_MESSAGE)
-            }
+            require(number in LOTTO_NUMBER_RANGE) { OUT_OF_RANGE_LOTTO_NUMBER_MESSAGE }
         }
     }
 

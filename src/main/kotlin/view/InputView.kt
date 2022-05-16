@@ -32,9 +32,7 @@ class InputView(private val scanner: Scanner) {
     }
 
     private fun valid(intList: List<Int>) {
-        if (intList.size != LOTTO_NUMBER_COUNT) {
-            throw IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_COUNT_MESSAGE)
-        }
+        require(intList.size == LOTTO_NUMBER_COUNT) { ILLEGAL_LOTTO_NUMBER_COUNT_MESSAGE }
     }
 
     fun inputLottoNumbers(count: Int): List<List<Int>> {

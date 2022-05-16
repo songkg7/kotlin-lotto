@@ -17,7 +17,7 @@ class LottoCount private constructor(val manualCount: Int, val autoCount: Int){
         }
 
         private fun shouldPositive(autoCount: Int) {
-            if (autoCount < 0) throw IllegalArgumentException(OVER_CAPITAL_MESSAGE)
+            require(autoCount >= 0) { OVER_CAPITAL_MESSAGE }
         }
     }
 
