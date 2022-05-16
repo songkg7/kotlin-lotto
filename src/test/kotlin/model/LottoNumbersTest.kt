@@ -25,7 +25,7 @@ internal class LottoNumbersTest : DescribeSpec({
             }
         }
 
-        context("lottoNumbers 안에 포함되어 있지 않은 숫자와 비교하면") {
+        context("lottoNumbers 안에 보너스볼의 번호가 포함되어 있지 않다면") {
             val lottoNumber = LottoNumber.of(45)
             it("false 를 반환한다.") {
                 val lottoNumbers = LottoNumbers.of(lottoNumberGroup)

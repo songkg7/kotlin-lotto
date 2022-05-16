@@ -2,7 +2,7 @@ package model
 
 import java.math.BigDecimal
 
-class LottoResult(val lottoRanks: List<LottoRank>, private val capital: Money) {
+class LottoResult(private val lottoRanks: List<LottoRank>, private val capital: Money) {
 
     fun calcEarningRate(): Double {
         val totalPrize = calcTotalPrize()
