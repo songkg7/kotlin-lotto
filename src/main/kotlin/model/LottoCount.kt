@@ -1,7 +1,5 @@
 package model
 
-import view.OVER_CAPITAL_MESSAGE
-
 class LottoCount private constructor(val manualCount: Int, val autoCount: Int) {
 
     companion object {
@@ -17,7 +15,7 @@ class LottoCount private constructor(val manualCount: Int, val autoCount: Int) {
         }
 
         private fun shouldPositive(autoCount: Int) {
-            require(autoCount >= 0) { OVER_CAPITAL_MESSAGE }
+            require(autoCount >= 0) { "구매금액을 초과한 로또 구매는 할 수 없습니다." }
         }
     }
 }

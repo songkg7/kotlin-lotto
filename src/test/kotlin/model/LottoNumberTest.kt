@@ -3,7 +3,6 @@ package model
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
-import view.OUT_OF_RANGE_LOTTO_NUMBER_MESSAGE
 
 internal class LottoNumberTest : DescribeSpec({
     describe("Create lottoNumber") {
@@ -23,7 +22,7 @@ internal class LottoNumberTest : DescribeSpec({
                     LottoNumber.of(it)
                 }
 
-                exception.message shouldBe OUT_OF_RANGE_LOTTO_NUMBER_MESSAGE
+                exception.message shouldBe "로또 번호의 범위를 벗어났습니다."
             }
         }
     }

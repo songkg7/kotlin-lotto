@@ -35,6 +35,6 @@ internal class InputViewTest : AnnotationSpec() {
             inputView.inputLottoNumbers()
         }
 
-        exception.message shouldBe ILLEGAL_LOTTO_NUMBER_COUNT_MESSAGE
+        exception.message shouldBe "로또 번호는 서로 다른 6개의 번호로 구성되어야 합니다."
     }
 }

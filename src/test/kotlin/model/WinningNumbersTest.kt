@@ -3,7 +3,6 @@ package model
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
-import view.DUPLICATE_BONUS_BALL_MESSAGE
 
 internal class WinningNumbersTest : DescribeSpec({
     describe("WinningNumbers 생성 검증") {
@@ -28,7 +27,7 @@ internal class WinningNumbersTest : DescribeSpec({
                     WinningNumbers.of(lottoNumbers, bonusBall)
                 }
 
-                exception.message shouldBe DUPLICATE_BONUS_BALL_MESSAGE
+                exception.message shouldBe "bonusBall 은 당첨번호와 중복되어선 안됩니다."
             }
         }
     }

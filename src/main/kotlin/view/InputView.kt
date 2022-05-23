@@ -21,13 +21,13 @@ class InputView(private val input: Input) {
             .distinct()
             .also { valid(it) }
     } catch (e: NumberFormatException) {
-        throw NumberFormatException(NUMBER_FORMAT_MESSAGE)
+        throw NumberFormatException("숫자만 입력해주세요.")
     }
 
     private fun printNewLine() = println()
 
     private fun valid(intList: List<Int>) {
-        require(intList.size == LOTTO_NUMBER_COUNT) { ILLEGAL_LOTTO_NUMBER_COUNT_MESSAGE }
+        require(intList.size == LOTTO_NUMBER_COUNT) { "로또 번호는 서로 다른 6개의 번호로 구성되어야 합니다." }
     }
 
     fun inputLottoNumbers(count: Int): List<List<Int>> {
@@ -39,6 +39,6 @@ class InputView(private val input: Input) {
     fun inputNumber() = try {
         input.read().toInt()
     } catch (e: NumberFormatException) {
-        throw NumberFormatException(NUMBER_FORMAT_MESSAGE)
+        throw NumberFormatException("숫자만 입력해주세요.")
     }
 }

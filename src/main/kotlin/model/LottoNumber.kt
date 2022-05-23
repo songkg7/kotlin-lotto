@@ -1,7 +1,5 @@
 package model
 
-import view.OUT_OF_RANGE_LOTTO_NUMBER_MESSAGE
-
 const val MIN = 1
 const val MAX = 45
 val LOTTO_NUMBER_RANGE = MIN..MAX
@@ -14,7 +12,7 @@ class LottoNumber private constructor(val number: Int) {
         }
 
         private fun validRange(number: Int) {
-            require(number in LOTTO_NUMBER_RANGE) { OUT_OF_RANGE_LOTTO_NUMBER_MESSAGE }
+            require(number in LOTTO_NUMBER_RANGE) { "로또 번호의 범위를 벗어났습니다." }
         }
     }
 
