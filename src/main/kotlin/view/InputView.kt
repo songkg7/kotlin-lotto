@@ -4,9 +4,9 @@ import model.LOTTO_NUMBER_COUNT
 
 fun <T> validInputView(supplier: () -> T, consumer: (String) -> Unit): T {
     return try {
-        supplier.invoke()
+        supplier()
     } catch (e: IllegalArgumentException) {
-        consumer.invoke(e.message!!)
+        consumer(e.message!!)
         validInputView(supplier, consumer)
     }
 }
